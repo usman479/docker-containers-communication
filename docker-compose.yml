@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"  # Expose the frontend to the host
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
